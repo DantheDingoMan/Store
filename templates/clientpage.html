@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <div class = "row">
+    {% for i in itemlist %}
+    
+    <div class ="col-5 mx-2 row container p-3 bg-info border border-rounded ">
+        <!--<form action = "/cart" method="POST">-->
+
+        <img class = "col " src="/static/uploads/{{i.itemname}}.jpg">
+        <div class = "container col">
+       
+        <h4 class = "" value = "{{ i.itemname }}" >{{ i.itemname}}</h4>
+        <p class = ""  value = "{{ i.price }}">{{ i.price}}</p>
+        <p class = "">{{ i.description}}</p>
+
+
+        <button class = "btn text-nowrap btn-outline-dark" onclick="addtocart('{{i.itemname}}', '{{i.price}}')">Add to cart</button>
+        <button class = "btn text-nowrap btn-outline-dark" onclick="removetocart('{{i.itemname}}', '{{i.price}}')">Remove from cart</button>
+        </div>
+        
+
+        </form>
+        
+    </div>
+
+    {% endfor %}
+    </div>
+{% endblock %}
+

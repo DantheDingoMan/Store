@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <div class="container row">
+
+    {% for i in itemlist %}
+
+    <div class ="m-2 col-5 row bg-info border border-rounded">
+        <form action = "/admin/edit" method="POST">
+
+        
+        <label for="delete">Delete?</label>
+        <select class="form-select" name="delete" id = "delete">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+        </select>
+
+        <input type = "hidden" value="{{ i.itemname}}" name = "itemname">
+        <img class = "col " src="/static/uploads/{{i.itemname}}.jpg">
+        <h3 value = "{{i.itemname}}name = "itemname">{{ i.itemname}}</h3>
+
+        <input class="input" type = "number" step = "0.01" value = "{{ i.price}}" name = "price">
+        <input class="input" type = "text" value = "{{ i.description}}" name = "description">
+
+        <input class="btn text-nowrap btn-outline-dark" type= "submit" value="Commit changes">
+
+
+        </form>
+        
+    </div>
+    
+    
+    
+
+    {% endfor %}
+
+    <div id = "adder" class = "container ">
+        
+        <form action = "/admin/add" method="POST" enctype="multipart/form-data">
+            
+            
+            <input type = "text" value="Beans" name = "itemname">
+            <input type = "number"  step = "0.01" value="2.99" name = "price">
+            <input type = "text" value="Tasty beans" name = "description">
+            <p>Select a file to upload</p>
+            <input type="file" name="file" autocomplete="off" required>
+
+            <input type="submit" value = "add">
+        </form>
+
+    </div>
+    </div>
+    
+   
+    {% if filename %}
+        <div>
+            <img src="{{ url_for('display_image', filename=filename) }}">
+        </div>
+    {% endif %}
+    
+
+
+{% endblock %}

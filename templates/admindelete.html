@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block content %}
+    <div>
+        <form action="/admin/deleter" method = "POST">
+        <h3>Are you sure you wish to delete?</h3>
+        <input type= "submit" value = "Yes"/>
+        <p>No</p>
+        </form>
+    </div>
+{% endblock %}

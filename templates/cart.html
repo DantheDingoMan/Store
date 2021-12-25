@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <h3>Your total cost is {{cost}}</h3>
+    
+    {% for i in itemlists %}
+        <p>{{i}}</p>
+    {% endfor %}
+{% endblock %}
